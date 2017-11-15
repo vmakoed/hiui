@@ -1,0 +1,57 @@
+> analyse_regression <- function(x, y) {
++   model <- lm(y ~ x)
++   print(summary(model))
++   dev.new()
++   plot(x, y)
++   abline(model)
++ }
+> dat <- read.table("~/dev/hiui/16-housing.txt", header=TRUE)
+> cat("statData")
+statData
+> analyse_regression(dat$CRIM, dat$INDUS)
+
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-20.718  -4.889  -1.449   5.102  17.741
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  9.96499    0.30257  32.935   <2e-16 ***
+x            0.32428    0.03246   9.991   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 6.274 on 504 degrees of freedom
+Multiple R-squared:  0.1653,  Adjusted R-squared:  0.1637
+F-statistic: 99.82 on 1 and 504 DF,  p-value: < 2.2e-16
+
+> n <- 100
+> a <- -0.1
+> b <- -0.1
+> s2 <- 0.01
+> x <- seq(0.0, 1.0, length=n)
+> y <- a * x + b + rnorm(n, 0, s2)
+> cat("randData")
+randData
+> analyse_regression(x, y)
+
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+       Min         1Q     Median         3Q        Max
+-0.0255768 -0.0069191  0.0007238  0.0063505  0.0231959
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept) -0.095363   0.002062  -46.25   <2e-16 ***
+x           -0.107627   0.003562  -30.21   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.01039 on 98 degrees of freedom
+Multiple R-squared:  0.903, Adjusted R-squared:  0.9021
+F-statistic: 912.8 on 1 and 98 DF,  p-value: < 2.2e-16
