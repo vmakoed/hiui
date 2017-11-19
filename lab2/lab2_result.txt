@@ -1,14 +1,4 @@
-> analyse_regression <- function(x, y) {
-+   model <- lm(y ~ x)
-+   print(summary(model))
-+   dev.new()
-+   plot(x, y)
-+   abline(model)
-+ }
-> dat <- read.table("~/dev/hiui/16-housing.txt", header=TRUE)
-> cat("statData")
 statData
-> analyse_regression(dat$CRIM, dat$INDUS)
 
 Call:
 lm(formula = y ~ x)
@@ -28,15 +18,7 @@ Residual standard error: 6.274 on 504 degrees of freedom
 Multiple R-squared:  0.1653,  Adjusted R-squared:  0.1637
 F-statistic: 99.82 on 1 and 504 DF,  p-value: < 2.2e-16
 
-> n <- 100
-> a <- -0.1
-> b <- -0.1
-> s2 <- 0.01
-> x <- seq(0.0, 1.0, length=n)
-> y <- a * x + b + rnorm(n, 0, s2)
-> cat("randData")
-randData
-> analyse_regression(x, y)
+randDatas
 
 Call:
 lm(formula = y ~ x)

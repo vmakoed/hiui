@@ -1,0 +1,7 @@
+statData
+
+[1] 0.4841897
+
+randData
+
+[1] 0

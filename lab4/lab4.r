@@ -5,6 +5,7 @@ require(rgl)
 plot_points <- function(train, test, clazz.train,
                         clazz.test) {
   rgl.open()
+  rgl.bg(color=c("white", "white"))
   plot3d(train[, 1], train[, 2], train[, 3],
          col=clazz.train, type='p', size=5, add=FALSE)
   plot3d(test[, 1], test[, 2], test[, 3],
@@ -30,14 +31,15 @@ dat <- read.table("~/dev/hiui/16-housing.txt", header=TRUE)
 
 cat("statData")
 analyse_knn(cbind(dat$CRIM, dat$INDUS,
-                  dat$NOX), unclass(dat$CHAS))
+                  dat$NOX), unclass(dat$AGE))
 n1 <- 1000
 a1 <- c(3, 5, 7)
-r1 <- cbind(c(4, 1, 0.2), c(1, 2, 0.2), c(0.2, 0.2, 2))
-n2 <- 500
-a2 <- c(7, 1, 11)
-r2 <- cbind(c(2, 1, 1), c(1, 2, 1.4), c(1, 1.4, 4))
+r1 <- cbind(c(4, 1, 1), c(1, 2, 0.1), c(1, 0.1, 2))
+n2 <- 50
+a2 <- c(7, 1, 1)
+r2 <- cbind(c(3, -1, 1), c(-1, 3, 1), c(1, 1, 2))
 dat <- rbind(mvrnorm(n1, a1, r1), mvrnorm(n2, a2, r2))
 
-
+cat("randData")
 analyse_knn(dat, c(rep(1, n1), rep(2, n2)))
+

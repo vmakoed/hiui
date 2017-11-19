@@ -1,14 +1,4 @@
-> require(MASS)
-> analyse_cor <- function(x, y) {
-+   print(cor.test(x, y))
-+   dev.new()
-+   plot(x, y)
-+ }
-> setwd("~/dev/hiui/lab1")
-> dat <- read.table("16-housing.txt", header=TRUE)
-> cat("statData")
 statData
-> analyse_cor(dat$CRIM, dat$INDUS)
 
   Pearson's product-moment correlation
 
@@ -21,13 +11,7 @@ sample estimates:
       cor
 0.4065834
 
-> n <- 100
-> a <- c(1, 1)
-> r <- cbind(c(1, -1), c(-1, 10))
-> dat <- mvrnorm(n, a, r)
-> cat("randomData")
 randomData
-> analyse_cor(dat[,1], dat[,2])
 
   Pearson's product-moment correlation
 
